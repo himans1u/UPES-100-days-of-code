@@ -99,6 +99,30 @@ void searchStudent()
         printf("\nStudent not found!\n");
     }
 }
+
+// Function to display all student records
+void displayAllStudents()
+{
+    if (studentCount == 0)
+    {
+        printf("\nNo student records available!\n");
+        return;
+    }
+
+    printf("\n========== ALL STUDENT RECORDS ==========\n");
+
+    for (int i = 0; i < studentCount; i++)
+    {
+        printf("\nStudent %d\n", i + 1);
+        printf("SAP ID: %s\n", students[i].sapID);
+        printf("Roll Number: %s\n", students[i].rollNo);
+        printf("Name: %s\n", students[i].name);
+        printf("Phone: %s\n", students[i].phone);
+        printf("Email: %s\n", students[i].email);
+        printf("Year: %d\n", students[i].year);
+        printf("Semester: %d\n", students[i].semester);
+    }
+}
 int main()
 {
     printf("====================================\n");
@@ -110,7 +134,8 @@ int main()
     printf("SGPA semesters: %d\n", SEMESTERS);
     printf("\n1. Add Student\n");
 printf("2. Search Student\n");
-printf("3. Exit\n");
+    printf("3. Display All Students\n");
+printf("4. Exit\n");
 printf("Enter your choice: ");
 
 int choice;
@@ -123,6 +148,10 @@ if (choice == 1)
 else if (choice == 2)
 {
     searchStudent();
+}
+    else if (choice == 3)
+{
+    displayAllStudents();
 }
 else
 {
