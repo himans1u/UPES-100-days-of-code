@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-
+#include <string.h>
 #define MAX_STUDENTS 100
 #define SEMESTERS 8
 
@@ -66,6 +66,39 @@ void addStudent()
 
     printf("\nStudent record added successfully!\n");
 }
+
+// Function to search for a student by SAP ID
+void searchStudent()
+{
+    char searchID[20];
+    int found = 0;
+
+    printf("\nEnter SAP ID to search: ");
+    scanf("%19s", searchID);
+
+    for (int i = 0; i < studentCount; i++)
+    {
+        if (strcmp(students[i].sapID, searchID) == 0)
+        {
+            printf("\nStudent Found!\n");
+            printf("SAP ID: %s\n", students[i].sapID);
+            printf("Roll Number: %s\n", students[i].rollNo);
+            printf("Name: %s\n", students[i].name);
+            printf("Phone: %s\n", students[i].phone);
+            printf("Email: %s\n", students[i].email);
+            printf("Year: %d\n", students[i].year);
+            printf("Semester: %d\n", students[i].semester);
+
+            found = 1;
+            break;
+        }
+    }
+
+    if (found == 0)
+    {
+        printf("\nStudent not found!\n");
+    }
+}
 int main()
 {
     printf("====================================\n");
@@ -76,7 +109,8 @@ int main()
     printf("Maximum students: %d\n", MAX_STUDENTS);
     printf("SGPA semesters: %d\n", SEMESTERS);
     printf("\n1. Add Student\n");
-printf("2. Exit\n");
+printf("2. Search Student\n");
+printf("3. Exit\n");
 printf("Enter your choice: ");
 
 int choice;
@@ -85,6 +119,10 @@ scanf("%d", &choice);
 if (choice == 1)
 {
     addStudent();
+}
+else if (choice == 2)
+{
+    searchStudent();
 }
 else
 {
